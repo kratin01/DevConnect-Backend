@@ -1,16 +1,22 @@
 import express from "express";
 import { connectDB } from "./config/database.js";
-
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth.js";
 import profileRouter from "./routes/profile.js";
 import requestRouter from "./routes/request.js";
 import userRouter from "./routes/user.js";
 import cors from "cors";
+
 const app = express();
+
+// Add a root route for testing
+app.get("/", (req, res) => {
+  res.send("DevConnect Backend is running!");
+});
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5173", // Update this for production
     credentials: true,
   })
 );
@@ -25,10 +31,10 @@ app.use("/", userRouter);
 connectDB()
   .then(() => {
     console.log("Database Connected Successfully!!");
-    app.listen(3000, () => {
+    app.listen(3000, "0.0.0.0", () => {
       console.log("Server is running on port 3000");
     });
   })
   .catch((err) => {
-    console.log("Error in database connnection");
+    console.log("Error in database connection");
   });
