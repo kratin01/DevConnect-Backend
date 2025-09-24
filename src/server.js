@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Update this for production
+    origin: "http://13.61.104.185", // Or the frontend domain if using NGINX on port 80
     credentials: true,
   })
 );
