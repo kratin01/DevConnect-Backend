@@ -1,16 +1,15 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
 
-export const connectDB=async()=>{
-    try{
-        await mongoose.connect("mongodb+srv://kratin:FCZO1QtdWSLGNWAp@devtinder.gzw23ee.mongodb.net/devTinder")
-    }
-    catch(err){
+export const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_DB_URI+"devTinder");
+    // console.log("MongoDB connected successfully!");
+  } catch (err) {
+    console.error("Error connecting to MongoDB:", err.message);
+    process.exit(1);
+  }
+};
 
-    }
-}
-
-
-
-// "mongodb+srv://kratin:FCZO1QtdWSLGNWAp@devtinder.gzw23ee.mongodb.net/" this will point to whole cluster
-//"mongodb+srv://kratin:FCZO1QtdWSLGNWAp@devtinder.gzw23ee.mongodb.net/devTinder" this will point to specifc database
