@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 
 app.use(
   cors({
-    origin: "http://13.61.104.185", // Or the frontend domain if using NGINX on port 80
+    origin: "http://13.61.104.185:5500", // Updated to match new port
     credentials: true,
   })
 );
