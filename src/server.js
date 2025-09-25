@@ -15,10 +15,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(
-  cors({
-    origin: "http://13.61.104.185:5500", // Updated to match new port
-    credentials: true,
-  })
+  cors({origin: "*", credentials: true})
 );
 app.use(express.json());
 app.use(cookieParser());
@@ -31,7 +28,7 @@ app.use("/", userRouter);
 connectDB()
   .then(() => {
     console.log("Database Connected Successfully!!");
-    app.listen(5500, "0.0.0.0", () => {
+    app.listen(5500, () => {
       console.log("Server is running on port 5500");
     });
   })
