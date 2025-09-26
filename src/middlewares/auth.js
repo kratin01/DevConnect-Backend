@@ -8,7 +8,7 @@ export const authUser = async (req, res, next) => {
       return res.status(401).send("Please login first");
     }
 
-    const decode = jwt.verify(token, "Mainhibataunga@12");
+    const decode = jwt.verify(token, process.env.JWT_SECRET);
     const { _id } = decode;
     const user = await User.findById(_id);
     if (!user) {

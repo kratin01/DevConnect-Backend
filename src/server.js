@@ -1,4 +1,5 @@
 import express from "express";
+import "dotenv/config";
 import { connectDB } from "./config/database.js";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth.js";
@@ -16,8 +17,8 @@ app.get("/", (req, res) => {
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // your frontend URL
-    credentials: true,               // allow cookies/auth headers
+    origin: "http://localhost:5173",
+    credentials: true, // allow cookies/auth headers
   })
 );
 app.use(express.json());
@@ -31,7 +32,7 @@ app.use("/", userRouter);
 connectDB()
   .then(() => {
     console.log("Database Connected Successfully!!");
-    app.listen(7777,'0.0.0.0', () => {
+    app.listen(7777, "0.0.0.0", () => {
       console.log("Server is running on port 7777");
     });
   })

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connection Request Accepted</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f7; margin: 0; padding: 0; color: #333; }
+        .container { max-width: 600px; margin: 40px auto; padding: 20px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid #e0e0e0; }
+        .header { text-align: center; border-bottom: 2px solid #e2e2e2; padding-bottom: 20px; margin-bottom: 20px; }
+        .header h1 { font-size: 28px; color: #5d5dff; margin: 0; }
+        .content { font-size: 16px; line-height: 1.6; padding: 0 10px; text-align: center; }
+        .content p { margin-bottom: 15px; }
+        .highlight { font-weight: bold; color: #5d5dff; }
+        .button-container { text-align: center; margin-top: 30px; }
+        .button { display: inline-block; padding: 12px 25px; background-color: #5d5dff; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; transition: background-color 0.3s ease; }
+        .button:hover { background-color: #4a4ad8; }
+        .footer { text-align: center; margin-top: 40px; font-size: 12px; color: #888; border-top: 1px solid #e2e2e2; padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Connection Accepted!</h1>
+        </div>
+        <div class="content">
+            <p>Hi <span class="highlight">{{from_user_firstName}}</span>,</p>
+            <p>Great news! Your connection request to <span class="highlight">{{loggedInUser_firstName}}</span> has been accepted.</p>
+            <p>You can now connect and collaborate with them!</p>
+            <div class="button-container">
+                <a href="{{app_url}}" class="button">Visit Profile</a>
+            </div>
+        </div>
+        <div class="footer">
+            <p>This email was sent by DevConnect.</p>
+        </div>
+    </div>
+</body>
+</html>
