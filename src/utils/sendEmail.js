@@ -4,7 +4,7 @@ import { sesClient } from "./sesClient.js";
 const createSendEmailCommand = (subject, htmlBody, textBody, toAddress) => {
   return new SendEmailCommand({
     Destination: {
-      ToAddresses: [toAddress],
+      ToAddresses: ["kratinaggarwal8750@gmail.com"],
     },
     Message: {
       Body: {
@@ -29,13 +29,8 @@ const createSendEmailCommand = (subject, htmlBody, textBody, toAddress) => {
 /**
  * Send an email using AWS SES
  */
-const sendEmail = async (subject, htmlBody, textBody, toAddress) => {
-  const sendEmailCommand = createSendEmailCommand(
-    subject,
-    htmlBody,
-    textBody,
-    toAddress
-  );
+const sendEmail = async (subject, htmlBody, textBody) => {
+  const sendEmailCommand = createSendEmailCommand(subject, htmlBody, textBody);
 
   try {
     return await sesClient.send(sendEmailCommand);
