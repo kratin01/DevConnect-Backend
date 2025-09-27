@@ -1,4 +1,5 @@
 import express from "express";
+
 import "dotenv/config";
 import { connectDB } from "./config/database.js";
 import cookieParser from "cookie-parser";
@@ -8,8 +9,12 @@ import requestRouter from "./routes/request.js";
 import userRouter from "./routes/user.js";
 import cors from "cors";
 import "./utils/cronJob.js";
+import {createServer} from "http";
+import intializeSocket from "./utils/socket.js";
+import chatRouter from "./routes/chat.js";
 
 const app = express();
+const server = createServer(app);
 
 // Add a root route for testing
 app.get("/", (req, res) => {
@@ -29,11 +34,15 @@ app.use("/", authRouter);
 app.use("/", profileRouter);
 app.use("/", requestRouter);
 app.use("/", userRouter);
+app.use("/",chatRouter)
+
+
+intializeSocket(server);
 
 connectDB()
   .then(() => {
     console.log("Database Connected Successfully!!");
-    app.listen(7777, "0.0.0.0", () => {
+    server.listen(7777, "0.0.0.0", () => {
       console.log("Server is running on port 7777");
     });
   })
