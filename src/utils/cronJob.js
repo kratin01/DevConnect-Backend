@@ -5,7 +5,7 @@ import { sendEmail } from "./sendEmail.js";
 
 //we schedule a job to run every day at 8 AM which basically sends the email to all users who have pending requests older than 24 hours
 cron.schedule("0 8 * * *", async () => {
-  const yesterday = subDays(new Date(), 0);
+  const yesterday = subDays(new Date(), 1);
   const start = startOfDay(yesterday);
   const end = endOfDay(yesterday);
   try {
